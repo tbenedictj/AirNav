@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website dengan Latar Belakang Berganti</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Roboto Condensed', sans-serif; /* Use the imported font */
+            transition: background-image 1s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .image-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center; /* Pusatkan gambar dalam baris */
+            gap: 30px; /* Jarak antar gambar */
+        }
+        .image-wrapper {
+            border: 4px solid rgba(4, 8, 67, 0.221); /* Border for each image */
+            border-radius: 10px 10px 0 0; /* Rounded corners for top only */
+            background-color: rgba(4, 18, 67, 0.619); /* Background color for the image wrapper */
+            overflow: hidden; /* Hide overflow to prevent larger image */
+            height: 230px; /* Reduce height */
+            position: relative; /* For absolute positioning inside if needed */
+        }
+        .description-wrapper {
+            border: 4px solid rgba(255, 255, 255, 0.7); /* Same border as image-wrapper */
+            border-radius: 0 0 10px 10px; /* Rounded corners for bottom only */
+            background-color: white; /* White background for description */
+            padding: 10px; /* Padding around the description */
+        }
+        img {
+            cursor: pointer;
+            width: 200px; /* Ukuran gambar */
+            height: auto;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.1); /* Efek zoom saat hover */
+        }
+        .description {
+            text-align: center; /* Pusatkan teks deskripsi */
+            font-size: 1.2em; /* Ukuran teks deskripsi */
+            color: rgba(4, 8, 67, 1); /* Dark blue text color for contrast */
+            font-weight: bold; /* Menjadikan teks bold */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <div>
+            <div class="image-wrapper">
+                <a href="https://teknikairnavmanado.com/" target="_blank">
+                    <img src="airnaev.png" alt="Gambar 1" onclick="setBackground('backgrounds/bg1.jpg')">
+                </a>
+            </div>
+            <div class="description-wrapper">
+                <div class="description">E-LOGBOOK</div>
+            </div>
+        </div>
+        <div>
+            <div class="image-wrapper">
+                <a href="https://lasimi.airnavindonesia.co.id/" target="_blank">
+                    <img src="airnaev.png" alt="Gambar 2" onclick="setBackground('backgrounds/bg2.jpg')">
+                </a>
+            </div>
+            <div class="description-wrapper">
+                <div class="description">LASIMI</div>
+            </div>
+        </div>
+        <div>
+            <div class="image-wrapper">
+                <a href="https://e-chain.airnavindonesia.co.id/" target="_blank">
+                    <img src="airnaev.png" alt="Gambar 3" onclick="setBackground('backgrounds/bg3.jpg')">
+                </a>
+            </div>
+            <div class="description-wrapper">
+                <div class="description">E-CHAIN</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const backgrounds = [
+            'backgrounds/background.png',
+            'backgrounds/background2.png',
+            'backgrounds/background3.png',
+            'backgrounds/background4.png'
+        ];
+        
+        let index = 0;
+
+        function changeBackground() {
+            document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 50, 0.8), rgba(0, 0, 50, 0.8)), url(${backgrounds[index]})`;
+            index = (index + 1) % backgrounds.length;
+        }
+
+        function setBackground(image) {
+            document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 50, 0.8), rgba(0, 0, 50, 0.8)), url(${image})`;
+        }
+
+        setInterval(changeBackground, 3000); // Ganti setiap 3 detik
+        changeBackground(); // Set background awal
+    </script>
+</body>
+</html>
